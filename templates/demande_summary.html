@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main>
+    <div class="container">
+    <u><h2 class="my-5 h2 text-center">ETAPE 2/3:  VERIFIER MES MOTIFS</h2></u>
+    <div class="table-responsive text-nowrap">
+    <h2>Aperçu des Motifs sélectionés</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Libelle</th>
+            <th scope="col">Prix unitaire</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix Total Motif</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for demande_item in object.items.all %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ demande_item.item.libelle }}</td>
+            <td>{{ demande_item.item.prix }}</td>
+            <td>
+                <a href="{% url 'core:remove-single-item-from-demande' demande_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
+                {{ demande_item.quantite }}
+                <a href="{% url 'core:add-to-demande' demande_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+            </td>
+            <td>
+            
+                {{ demande_item.get_total_item_price }}F
+            
+            <a style='color: red;' href="{% url 'core:remove-from-demande' demande_item.item.slug %}">
+                <i class="fas fa-trash float-right"></i>
+            </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan='5'>Vous n'avez pas de motif sélectioné</td>
+        </tr>
+        <tr>
+            <td colspan="5">
+            <a class='btn btn-primary float-right' href='{% url "core:motifs"%}'>Choisir d'autres motifs</a>
+            </td>
+        </tr>
+        {% endfor %}
+        
+        {% if object.get_total %}
+        <tr>
+            <td colspan="4"><b>Total</b></td>
+            <td><b>{{ object.get_total }}F</b></td>
+        </tr>
+        <tr>
+            <td colspan="5">
+            <a class='btn btn-success float-right ml-2' href='{%url "core:demande" object.id%}'>Etape suivante</a>
+            <a class='btn btn-primary float-right  ml-2' href='{%url "core:motifs"%}'>Choisir d'autres motifs</a>
+            <a class='btn btn-danger float-right text-white  ml-2'  data-toggle="modal" data-target="#deleteModal">Annuler la demande</a>
+            </td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    </div>
+
+    </div>
+    <!-- Delete Modal-->
+ <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Supprimer?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Voulez-vous vraiment supprimer la demande ?</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+            <a class="btn btn-primary" href="{%url 'core:delete' object.id  %}" >Supprimer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </main>
+
+{% endblock content %}
+
+

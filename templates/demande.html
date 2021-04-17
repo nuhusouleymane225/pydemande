@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{%load crispy_forms_tags %}
+{% block content %}
+
+  <main >
+    <div class="container wow fadeIn">
+      <u><h2 class="my-5 h2 text-center">ETAPE 3/3:  REMPLIR L'EN-TETE DE LA DEMANDE</h2></u>
+      <div class="row">
+        <div class="col-md-8 mb-4">
+          <div class="card">
+            <form method="POST" class="card-body">
+              {% csrf_token %}
+
+              {{ form | crispy  }}
+
+              <!--<div class='hideable_shipping_form'>
+
+              <!--  <div class="md-form mb-5">
+              <!--    {{form.num_releve }}
+              <!--    
+              <!--  </div>
+
+              <!--  <div class="md-form mb-5">
+              <!--    {{form.code_vehicule }}
+              <!--  </div>
+
+              <!--  <div class="md-form mb-5">
+              <!--    {{form.code_remorque }}
+              <!--  </div>
+
+              <!--  <div class="md-form mb-5">
+              <!--    {{form.imat_véhicule }}
+              <!--  </div>
+
+              <!--  <div class="md-form mb-5">
+              <!--    {{form.imat_remorque }}
+              <!--  </div>
+              <!--  
+
+              <!--  
+              <!--  <div class="md-form mb-5">
+              <!--  
+              <!--    {{form.code_activite }}
+              <!--  </div>
+              <!--  
+              <!--  <label>Libelle activité</label>
+              <!--  <div class="md-form mb-5">
+              <!--  
+              <!--    {{form.libelle_activite }}
+              <!--  </div>
+
+              <!--  
+              <!--  <div class="custom-control custom-checkbox">
+              <!--  <label>A rembourser</label>
+              <!--    {{ form.a_rembourser }}
+              <!--  </div>
+
+              <!--</div>
+
+              <!--
+
+              <!--<hr>
+
+              <!--
+
+              <!--
+
+              <!--  
+
+              <!--</div>-->
+
+            
+
+           
+
+              <hr class="mb-4">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Soumettre ma demande</button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+  </main>
+
+{% endblock content %}
+
+{% block extra_scripts %}
+<script>
+var hideable_shipping_form = $('.hideable_shipping_form');
+var hideable_billing_form = $('.hideable_billing_form');
+
+var use_default_shipping = document.querySelector("input[name=use_default_shipping]");
+var use_default_billing = document.querySelector("input[name=use_default_billing]");
+
+use_default_shipping.addEventListener('change', function() {
+  if (this.checked) {
+    hideable_shipping_form.hide();
+  } else {
+    hideable_shipping_form.show();
+  }
+})
+
+use_default_billing.addEventListener('change', function() {
+  if (this.checked) {
+    hideable_billing_form.hide();
+  } else {
+    hideable_billing_form.show();
+  }
+})
+
+</script>
+{% endblock extra_scripts %}

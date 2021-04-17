@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <main class="mt-5 pt-4">
+  <u><h2 class="h3 mb-0 text-center text-gray-800">AJOUTER LE MOTIF A MA DEMANDE</h2></u>
+    <div class="container dark-grey-text mt-5">
+        
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+        
+        
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+            
+              <a href="">
+                <h1><span class="badge orange mr-4">{{ object.libelle }}</span></h2>
+              </a>
+            </div>
+
+            <p class="lead">
+              
+              <span>{{ object.prix }}</span>
+            
+            </p>
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p>{{ object.description }}</p>
+
+            <a href="{{ object.get_add_to_demande_url }}" class="btn btn-primary btn-md my-0 p">
+              Ajouter à la demande
+              <i class="fas fa-plus ml-1"></i>
+            </a>
+            <a href="{{ object.get_remove_from_demande_url }}" class="btn btn-danger btn-md my-0 p">
+              Supprimer de la demande
+              <i class="fas fa-trash ml-1"></i>
+            </a>
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+     
+
+      
+
+    </div>
+  </main>
+
+{% endblock content %}
