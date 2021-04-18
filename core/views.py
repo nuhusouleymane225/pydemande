@@ -93,10 +93,10 @@ def demande_traitement_edit(request, id):
                 form.instance.ref_code = form.instance.create_ref_code()
                 form.instance.demande_date = timezone.now()
                 form.save()
-                model = form.instance
                 messages.info(request, "Votre demande a été soumise avec succès merci de patienter durant la validation.")
                 return redirect('/home')
             except Exception as e:
+                print(e)
                 messages.warning(request, "Une erreur s'est produite veuillez rééssayer!")
                 return redirect("core:motifs")
     context = {'form': form, 'result':result}
@@ -158,7 +158,7 @@ def is_valid_form(values):
     return valid
 
 def intro(request):
-    template_name = 'client.html'
+    template_name = 'home.html'
     return render(request, template_name)
 
 @login_required

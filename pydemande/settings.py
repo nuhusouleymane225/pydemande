@@ -91,7 +91,7 @@ ADMIN_SHORTCUTS_SETTINGS = {
 }
 
 # requirement for user session manage
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = 'home/'
 SILENCED_SYSTEM_CHECKS = ['admin.E410']
 

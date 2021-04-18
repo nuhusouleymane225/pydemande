@@ -38,3 +38,19 @@ pip install mssql-django
 
     # set this to False if you want to turn off pyodbc's connection pooling
     DATABASE_CONNECTION_POOLING = False
+
+
+    <center>
+                <div class="text-center" style="border-bottom: 5px solid #d51a1d; width: 50px;"></div>
+          </center>
+
+ <h1 class="text-uppercase text-white font-weight-bold">(DFC) Demande frais chauffeur</h1>
+          <center>
+                <div class="text-center" style="border-bottom: 5px solid #d51a1d; width: 50px;"></div>
+          </center>
+        </div>
+        <div class="col-lg-8 align-self-baseline">
+          <p class="text-white-75 font-weight-light mb-5">Ce site permet aux agents d'exploitations de demander des frais de mission pour les chauffeurs.</p>
+          
+          <a class="btn btn-danger btn-xl " href="{% url 'core:home' %}">Démarrer</a>
+          <br>
